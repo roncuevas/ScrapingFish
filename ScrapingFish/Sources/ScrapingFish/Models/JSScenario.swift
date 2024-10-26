@@ -11,7 +11,7 @@ public enum JSScenario: Sendable {
     case waitForAny(WaitForAnyType)
     case evaluate
     
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .click: "click"
         case .clickIfExists: "click_if_exists"
@@ -27,7 +27,7 @@ public enum JSScenario: Sendable {
         }
     }
     
-    var toString: String {
+    public var toString: String {
         switch self {
         case .click: ""
         case .clickIfExists: ""
@@ -36,9 +36,11 @@ public enum JSScenario: Sendable {
         case .select: ""
         case .setLocalStorage: ""
         case .scroll: ""
-        case .wait(let type): type.toString
+        case .wait(let type):
+            (self.rawValue.inQuotes.colon + type.toString).inBraces
         case .waitFor: ""
-        case .waitForAny(let type): type.toString
+        case .waitForAny(let type):
+            (self.rawValue.inQuotes.colon + type.toString).inBraces
         case .evaluate: ""
         }
     }

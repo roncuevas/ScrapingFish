@@ -6,7 +6,7 @@ public extension Array where Element == String {
 
 public extension Array<JSScenario> {
     var toString: String {
-        let steps = map { $0.toString }
-        return "steps".inQuotes
+        let steps = map { $0.toString }.commaSeparated
+        return ("steps".inQuotes.colon + steps.inBrackets).inBraces
     }
 }

@@ -29,7 +29,7 @@ extension Array<ScrapingFishParameter>: Sendable {
         for parameter in self {
             parameters[parameter.associatedValue()]  = switch parameter {
             case .sesionID(let value): value
-            case .renderJS(let value): value
+            case .renderJS(let value): value.toString
             case .jsScenario(let value): value.toString
             case .extractRules(let value): value
             case .headers(let value): value
@@ -41,7 +41,7 @@ extension Array<ScrapingFishParameter>: Sendable {
 
 public enum ScrapingFishParameter: Sendable {
     case sesionID(String)
-    case renderJS(String)
+    case renderJS(Bool)
     case jsScenario([JSScenario])
     case extractRules(String)
     case headers(String)
