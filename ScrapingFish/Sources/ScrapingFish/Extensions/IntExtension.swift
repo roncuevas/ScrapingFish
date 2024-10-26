@@ -1,4 +1,4 @@
-extension Int {
+public extension Int {
     var toString: String {
         String(self)
     }
