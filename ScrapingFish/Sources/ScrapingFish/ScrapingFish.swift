@@ -8,7 +8,7 @@ public struct ScrapingFish {
         self.apiKey = apiKey
     }
     
-    public func scrape(url: String,
+    public func debug(url: String,
                        parameters: [ScrapingFishParameter]) async throws -> String {
         try await NetworkManager.sendRequest(url: Constants.url,
                                              parameters: parameters.toQueryItems(apiKey: apiKey, url: url))
@@ -31,7 +31,7 @@ extension Array<ScrapingFishParameter>: Sendable {
             case .sesionID(let value): value
             case .renderJS(let value): value.toString
             case .jsScenario(let value): value.toString
-            case .extractRules(let value): value
+            case .extractRules(let value): value.toString.inBraces
             case .headers(let value): value
             }
         }
@@ -43,7 +43,7 @@ public enum ScrapingFishParameter: Sendable {
     case sesionID(String)
     case renderJS(Bool)
     case jsScenario([JSScenario])
-    case extractRules(String)
+    case extractRules(ExtractionRules)
     case headers(String)
     
     func associatedValue() -> String {
