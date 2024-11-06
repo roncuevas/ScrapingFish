@@ -23,9 +23,10 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "ScrapingFish",
-            dependencies: ["Alamofire"]),
+            dependencies: ["Alamofire"],
+            path: "ScrapingFish/Sources"),
         .testTarget(name: "ScrapingFishTests",
                     dependencies: ["ScrapingFish"],
-                    path: "Tests"),
+                    path: "ScrapingFish/Tests"),
     ]
 )
