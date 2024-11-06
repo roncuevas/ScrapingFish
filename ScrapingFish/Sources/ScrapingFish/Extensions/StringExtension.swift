@@ -22,4 +22,12 @@ public extension String {
     static func keyValue(_ key: String, _ value: String) -> String {
         "\(key):\(value)"
     }
+    
+    var addHTTPPrefix: Self {
+        if self.hasPrefix("http://") || self.hasPrefix("https://") {
+            return self
+        } else {
+            return "https://\(self)"
+        }
+    }
 }
