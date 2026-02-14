@@ -15,15 +15,9 @@ let package = Package(
             name: "ScrapingFish",
             targets: ["ScrapingFish"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.10.0")),
-    ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "ScrapingFish",
-            dependencies: ["Alamofire"],
             path: "ScrapingFish/Sources"),
         .testTarget(name: "ScrapingFishTests",
                     dependencies: ["ScrapingFish"],
